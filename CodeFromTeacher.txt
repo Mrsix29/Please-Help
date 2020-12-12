@@ -1,0 +1,27 @@
+ DateTime previousEndTime = bookings.Movies[0].StartTime.Date + new TimeSpan(10,59,0);
+                DateTime startOfDay = bookings.Movies[0].StartTime.Date + new TimeSpan(11, 00, 0);
+                DateTime endOfDay = bookings.Movies[0].StartTime.Date + new TimeSpan(23, 00, 0);
+                DateTime date = DateTime.Parse("2020/12/12");
+                TimeSpan timespan1 = TimeSpan.Parse("3:00");
+                if (startOfDay.Hour < 11) { }
+                var timespan2 = new TimeSpan(4, 00, 0);
+                var q1 = from x in context.ShowTimes
+                         orderby x.StartDate descending
+                         select new
+                         {
+                             allData = x,
+                             startDate = x.StartDate,
+                             startDateAddFive = x.StartDate.AddMinutes(5),
+                             timespan1,
+                             startDateAndAddedTime = x.StartDate + timespan1,
+                             justDate = x.StartDate.Date,
+                             startOfDay = x.StartDate.Date + timespan1,
+                             date,
+                             combined = date + timespan1,
+                             another = date + timespan2,
+                             greaterThan = (date + timespan2) < (date + timespan1) ? "yes" : "no"
+                         };
+                int variable = 6;
+                DateTime datefield = DateTime.Now;
+                brokenRules.Add(new BusinessRuleException<int>("message string", nameof(variable), variable));
+                brokenRules.Add(new BusinessRuleException<DateTime>("Message string", nameof(datefield), datefield));
